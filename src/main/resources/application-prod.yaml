@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: root
+    password: 1234
+knife4j:
+  # 开启增强
+  enable: false
+  # 是否生产环境 屏蔽所有资源接口,一般这个用于生产环境 屏蔽资源，与上面二选一
+  production: true

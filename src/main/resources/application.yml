@@ -1,0 +1,35 @@
+server:
+  # 开启响应数据压缩、默认只压缩超过2048 字节的数据
+  compression:
+    enabled: false
+    mime-types: application/json
+  port: 8731
+spring:
+  profiles:
+    # maven???profile????local
+    active: @profileActive@
+  application:
+    name: Easy-SpringBoot-CLI
+  datasource:
+    url: jdbc:mysql://localhost:3306/easy_cli?serverTimezone=GMT%2B8&characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1234
+    druid:
+      db-type: mysql
+  jackson:
+    # 格式化返回时间 yyyy-MM-dd HH:mm:ss
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+mybatis-plus:
+  global-config:
+    # 逻辑删除配置
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      logic-delete-field: isDel
+api-enc:
+  # 是否开启接口加密
+  enable: false
+  # 加密密钥
+  secretKey: ????
