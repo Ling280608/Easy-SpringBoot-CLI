@@ -11,6 +11,4 @@ public class ResponseCode {
     public static final int WARNING = 500;
     // 错误
     public static final int ERROR = 400;
-    // 令牌异常
-    public static final int TOKEN_ABNORMAL = 630;
 }

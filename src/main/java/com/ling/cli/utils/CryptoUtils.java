@@ -6,7 +6,7 @@ import cn.hutool.core.codec.Base64;
  * @author ling
  * @description: 加解密工具
  */
-public class CryptoUtil {
+public class CryptoUtils {
 
     /**
      * @param data               待加密数据

@@ -7,8 +7,9 @@ import lombok.Getter;
  * @author ling
  * @description: 线程变量工具
  */
+
 @Getter
-public class SysThreadLocalUtil {
+public class SysThreadLocalUtils {
 
     private static final ThreadLocal<SysThreadVar> THREAD_LOCAL = new ThreadLocal<>();
 

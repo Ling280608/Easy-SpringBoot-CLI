@@ -2,15 +2,3 @@ mybatis-plus:
   # 配置日志 #仅控制台输出的日志
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-knife4j:
-  # 开启增强
-  enable: true
-  # 不是很重要的环境，但是又不想暴露文档可以用这个
-  basic:
-    # 开启basic认证 输入用户名密码才能访问/doc.html
-    enable: false
-    # 认证用户名/密码
-    username: 1234
-    password: admin
-  # 是否生产环境 屏蔽所有资源接口,一般这个用于生产环境 屏蔽资源，与上面二选一
-  production: false

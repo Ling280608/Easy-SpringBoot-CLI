@@ -3,7 +3,8 @@ server:
   compression:
     enabled: false
     mime-types: application/json
-  port: 8731
+  port: 8732
+
 spring:
   profiles:
     # maven???profile????local
@@ -17,8 +18,19 @@ spring:
     password: 1234
     druid:
       db-type: mysql
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+  #rabbitmq配置
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: user
+#    password: admin
   jackson:
-    # 格式化返回时间 yyyy-MM-dd HH:mm:ss
+    # 序列化时间格式 yyyy-MM-dd HH:mm:ss
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
 mybatis-plus:
@@ -29,7 +41,12 @@ mybatis-plus:
       logic-not-delete-value: 0
       logic-delete-field: isDel
 api-enc:
-  # 是否开启接口加密
-  enable: false
-  # 加密密钥
-  secretKey: ????
+  # 是否开启请求加密
+  requestEnable: true
+  # 是否开启响应加密
+  respondEnable: true
+  # 请求头中携带的加密字段 AES 密钥加密后密文
+  keyHeader: Encrypt-Key
+  # RSA加解密密钥
+  publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMrHKwbWS2BhsReRcDsCrt+Q4J1GIgWdk8t9+3SlD+Dq8D+C8bmeeRNEqzXKEBeRp9urWMwu5HRLBC1J1U1K38sCAwEAAQ==
+  privateKey: MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAyscrBtZLYGGxF5FwOwKu35DgnUYiBZ2Ty337dKUP4OrwP4LxuZ55E0SrNcoQF5Gn26tYzC7kdEsELUnVTUrfywIDAQABAkAggbEqFWxb9Q04o/4D17hE6qq3S6jkkZBBzN5koplbCsVxJrxHmVT44FUc82F2SYu7jSGtBqwlfc6Ij4arGfIBAiEA8VPo7y/MAH0hVVHvuP0FaNIoNpRHBzdmmB01lR/PoIECIQDXG0JZ6Q7Wr9Z7bsgaiQ1XnwHcbWg/+BS3ivwlaEnaSwIgZoTwApR6hIaj33wEa8DJSINm4/DPz8gARIS8G5K9AIECIQCEJgT/Q4SQM/pqXkaktqnxuIfmKXiwQ/JGSCZbvNQSPQIgBTwnFxLPAafFYUtDooVS+tT2O/XAP7QkvCc0XmK6gGQ=
