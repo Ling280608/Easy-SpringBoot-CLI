@@ -1,7 +1,7 @@
 # Easy-SpringBoot-CLI
 
 #### 介绍
-一个简易的SpringBoot框架脚手架，具备SpringBoot服务器应该具备的小模块，不包含其他主线模块以及花里胡哨模块。
+一个简易的SpringBoot框架脚手架，具备SpringBoot服务器常用的小模块。
 
 #### 集成内容
 
