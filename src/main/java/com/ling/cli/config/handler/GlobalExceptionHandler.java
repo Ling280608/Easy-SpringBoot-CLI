@@ -70,16 +70,6 @@ public class GlobalExceptionHandler {
         return SysResult.error("参数解析失败");
     }
 
-    /**
-     * 400 - Bad Request
-     */
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(ValidationException.class)
-    public SysResult handleValidationException(ValidationException e) {
-        log.info(HttpServletRequestUtils.getAllRequestInfo());
-        log.error("参数验证失败", e);
-        return SysResult.error(e.getMessage());
-    }
 
     /**
      * 405 - Method Not Allowed
@@ -144,9 +134,9 @@ public class GlobalExceptionHandler {
     /**
      * 兜底验证ValidationException
      */
-    @ExceptionHandler(javax.validation.ValidationException.class)
-    public SysResult handleValidationException(javax.validation.ValidationException e) {
-        log.error(e.getMessage(), e);
+    @ExceptionHandler(ValidationException.class)
+    public SysResult handleValidationException(ValidationException e) {
+        log.error("参数验证失败", e);
         return SysResult.warning( e.getCause().getMessage());
     }
 
