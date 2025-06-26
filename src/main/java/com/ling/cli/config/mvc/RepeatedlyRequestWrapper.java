@@ -46,6 +46,10 @@ public class RepeatedlyRequestWrapper extends HttpServletRequestWrapper {
         request.setCharacterEncoding(CharsetUtil.UTF_8);
         response.setCharacterEncoding(CharsetUtil.UTF_8);
 
+
+        // 取出请求数据
+        body = IoUtil.readBytes(request.getInputStream(), false);
+
         // 解密模块
         ApiEncryptionConfig encryptionConfig = SpringUtil.getBean(ApiEncryptionConfig.class);
         if (encryptionConfig.isRequestEnable() && request.getMethod().equals("POST")) {
@@ -70,10 +74,8 @@ public class RepeatedlyRequestWrapper extends HttpServletRequestWrapper {
             String requestData = aes.decryptStr(aesCiphertext);
             log.info("解密后的数据:{}", requestData);
             body = requestData.getBytes(StandardCharsets.UTF_8);
-            return;
         }
-        // 取出请求数据  
-        body = IoUtil.readBytes(request.getInputStream(), false);
+
     }
 
     @Override

@@ -12,6 +12,7 @@ import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.JSON;
 import com.ling.cli.config.configProperties.ApiEncryptionConfig;
 import com.ling.cli.utils.HttpServletRequestUtils;
+import jodd.net.HttpMethod;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,9 +55,12 @@ public class SysResponseBodyAdvice implements ResponseBodyAdvice {
                 .set("requestURI", HttpServletRequestUtils.getRequestURI())
                 .set("remoteIP", HttpServletRequestUtils.getRemoteIP())
                 .set("headers", HttpServletRequestUtils.getHeaders())
-                .set("requestBody", HttpServletRequestUtils.getBody())
                 .set("responseBody", responseBodyJson)
                 .set("method", serverHttpRequest.getMethod()));
+
+        if (HttpMethod.POST.toString().equalsIgnoreCase(serverHttpRequest.getMethod().toString())){
+            logData.put("requestBody", HttpServletRequestUtils.getBody());
+        }
 
         threadPool.execute(() -> {
             this.printLogger(logData);
